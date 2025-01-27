@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import Theme from "@/app/components/ui/Theme/Theme";
+import Theme from "@/components/ui/Theme/Theme";
 
 const PATH = [
   { name: "Home", path: "/" },
@@ -20,6 +20,7 @@ const Header = () => {
           <a
             href={"https://github.com/byjins"}
             className={"rounded-full overflow-hidden"}
+            target={"_blank"}
           >
             <Image
               src={"https://avatars.githubusercontent.com/byjins"}

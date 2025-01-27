@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "@/app/components/Layout/Header";
-import ThemeProvider from "@/app/components/ui/Theme/ThemeProvider";
+import Header from "@/components/Layout/Header";
+import ThemeProvider from "@/components/ui/Theme/ThemeProvider";
 
 export const metadata: Metadata = {
   title: "유병진 | Jin",
@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`antialiased min-h-dvh dark:bg-foreground dark:text-white`}
+        className={`antialiased min-h-dvh dark:bg-foreground dark:text-white mb-10`}
       >
         <ThemeProvider>
           <Header />
