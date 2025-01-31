@@ -11,22 +11,35 @@ interface Props {
 
 const PostCard = ({ category, title, content, img, date }: Props) => {
   return (
-    <div className={"flex sm:flex-col-reverse gap-3"}>
-      <div className={"w-4/6 flex flex-col justify-between"}>
+    <div
+      className={"flex flex-col-reverse md:flex-row gap-3 cursor-pointer group"}
+    >
+      <div className={"w-full md:w-4/6 flex flex-col justify-between"}>
         <div>
           <div className={"w-full"}>{category}</div>
-          <h6 className={"text-2xl font-bold mb-2"}>{title}</h6>
+          <h6
+            className={
+              "text-2xl font-bold mb-2 group-hover:text-blue-400 transition-colors"
+            }
+          >
+            {title}
+          </h6>
           <p className={"dark:text-gray-400 mb-2"}>{content}</p>
         </div>
-        <span>{date}</span>
+        <span className={"text-gray-400"}>{date}</span>
       </div>
-      <Image
-        src={img}
-        alt={"이미지"}
-        width={100}
-        height={150}
-        className={"w-2/6 h-36 rounded sm:w-full"}
-      />
+      <div
+        className={
+          "h-36 w-full md:w-2/6 relative rounded overflow-hidden border"
+        }
+      >
+        <Image
+          src={img}
+          alt={"이미지"}
+          fill
+          className={"object-cover group-hover:scale-105 transition-transform"}
+        />
+      </div>
     </div>
   );
 };

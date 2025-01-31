@@ -24,13 +24,12 @@ const Home = () => {
     <section className={"flex flex-col gap-10"}>
       <article>
         <div className={"flex gap-5 items-center flex-wrap"}>
-          <div className={"w-36 h-36"}>
+          <div className={"w-36 h-36 relative"}>
             <Image
-              src={"https://avatars.githubusercontent.com/byjins"}
+              src={"/images/profile.webp"}
               alt={"프로필"}
-              className={"w"}
-              width={144}
-              height={144}
+              fill
+              className={"object-contain"}
             />
           </div>
           <div className={"flex flex-col"}>
@@ -59,27 +58,27 @@ const Home = () => {
         </ul>
       </article>
       <article>
-        <h2 className={"text-lg mb-5"}>최근 글</h2>
-        <div className={"grid grid-cols-1 sm:grid-cols-3 gap-5 w-full"}>
+        <h2 className={"text-lg mb-5 italic"}>최근 글</h2>
+        <div className={"flex flex-col gap-6"}>
           <PostCard
             category={"Next"}
             title={"이게뭐야"}
             content={"컨텐트"}
-            img={"/test1.png"}
+            img={"/images/test1.png"}
             date={"2024-10-20"}
           />
           <PostCard
             category={"Typescript"}
             title={"이게뭐야"}
             content={"컨텐트"}
-            img={"/test1.png"}
+            img={"/images/test1.png"}
             date={"2024-10-20"}
           />
           <PostCard
             category={"TDD"}
             title={"이게뭐야"}
             content={"컨텐트"}
-            img={"/test1.png"}
+            img={"/images/test1.png"}
             date={"2024-10-20"}
           />
         </div>
