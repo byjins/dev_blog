@@ -62,21 +62,7 @@ const Home = () => {
         <div className={"flex flex-col gap-6"}>
           <PostCard
             category={"Next"}
-            title={"이게뭐야"}
-            content={"컨텐트"}
-            img={"/images/test1.png"}
-            date={"2024-10-20"}
-          />
-          <PostCard
-            category={"Typescript"}
-            title={"이게뭐야"}
-            content={"컨텐트"}
-            img={"/images/test1.png"}
-            date={"2024-10-20"}
-          />
-          <PostCard
-            category={"TDD"}
-            title={"이게뭐야"}
+            title={"테스트"}
             content={"컨텐트"}
             img={"/images/test1.png"}
             date={"2024-10-20"}
