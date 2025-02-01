@@ -1,3 +1,6 @@
+import Image from "next/image";
+import PostCard from "@/components/ui/PostCard";
+
 const INTRODUCE = [
   {
     title: "효율적인 문제 해결과 성장",
@@ -20,10 +23,31 @@ const Home = () => {
   return (
     <section className={"flex flex-col gap-10"}>
       <article>
-        <h1 className={"text-lg font-bold italic my-6"}>
-          가치있는 경험을 만들고 싶은 프론트엔드 개발자 유병진입니다.
-        </h1>
-        <div></div>
+        <div className={"flex gap-5 items-center flex-wrap"}>
+          <div className={"w-36 h-36 relative"}>
+            <Image
+              src={"/images/profile.webp"}
+              alt={"프로필"}
+              fill
+              className={"object-contain"}
+            />
+          </div>
+          <div className={"flex flex-col"}>
+            <a
+              href="https://github.com/byjins"
+              className="hover:underline"
+              target="_blank"
+            >
+              - GitHub
+            </a>
+            <a href="mailto:ppwm111@naver.com" className="hover:underline">
+              - ppwm111@naver.com
+            </a>
+          </div>
+          <h1 className={"text-lg font-bold italic my-6"}>
+            가치있는 경험을 만들고 싶은 프론트엔드 개발자 유병진입니다.
+          </h1>
+        </div>
         <ul>
           {INTRODUCE.map(({ title, description }) => (
             <li className={"my-2"} key={title}>
@@ -34,7 +58,16 @@ const Home = () => {
         </ul>
       </article>
       <article>
-        <h2 className={"text-lg"}>최근 글</h2>
+        <h2 className={"text-lg mb-5 italic"}>최근 글</h2>
+        <div className={"flex flex-col gap-6"}>
+          <PostCard
+            category={"Next"}
+            title={"테스트"}
+            content={"컨텐트"}
+            img={"/images/test1.png"}
+            date={"2024-10-20"}
+          />
+        </div>
       </article>
     </section>
   );
