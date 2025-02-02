@@ -1,5 +1,4 @@
 import Image from "next/image";
-import PostCard from "@/components/ui/PostCard";
 
 const INTRODUCE = [
   {
@@ -17,6 +16,15 @@ const INTRODUCE = [
     description:
       "개발은 끊임없이 변화하는 분야입니다. 사용자와 조직에 가치있는 경험을 만들기 위해선 꾸준한 학습이 필요합니다. 꾸준한 학습과 지식 공유는 개인과 조직이 성장할 수 있는 밑거름이 된다고 생각합니다.",
   },
+];
+
+const SKILL = [
+  "JavaScript",
+  "TypeScript",
+  "React",
+  "Nextjs",
+  "tailwindcss",
+  "styled-components",
 ];
 
 const Home = () => {
@@ -44,7 +52,7 @@ const Home = () => {
               - ppwm111@naver.com
             </a>
           </div>
-          <h1 className={"text-lg font-bold italic my-6"}>
+          <h1 className={"text-lg font-bold italic my-4"}>
             가치있는 경험을 만들고 싶은 프론트엔드 개발자 유병진입니다.
           </h1>
         </div>
@@ -57,16 +65,47 @@ const Home = () => {
           ))}
         </ul>
       </article>
-      <article>
-        <h2 className={"text-lg mb-5 italic"}>최근 글</h2>
-        <div className={"flex flex-col gap-6"}>
-          <PostCard
-            category={"Next"}
-            title={"테스트"}
-            content={"컨텐트"}
-            img={"/images/test1.png"}
-            date={"2024-10-20"}
-          />
+      <article className={"md:flex gap-6"}>
+        <div className={"flex flex-col gap-5 md:w-2/3 mb-5"}>
+          <div>
+            <h2 className={"text-lg mb-2 italic font-bold"}>Work experience</h2>
+            <div className={"flex flex-col gap-6"}>
+              <div className={"flex gap-5 items-center justify-between"}>
+                <div className={"flex flex-col"}>
+                  <span>(주) 피플앤드테크놀러지</span>
+                  <span className={"text-gray-500"}>솔루션 개발팀</span>
+                </div>
+                <p>2023.03.13 ~ ing</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h2 className={"text-lg mb-2 italic font-bold"}>Education</h2>
+            <div className={"flex flex-col gap-6"}>
+              <div className={"flex gap-5 items-center justify-between"}>
+                <div className={"flex flex-col"}>
+                  <span>경민대학교</span>
+                  <span className={"text-gray-500"}>
+                    컴퓨터소프트웨어학과(전공심화)(학사)
+                  </span>
+                </div>
+                <p>4.26 / 4.5</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className={"flex flex-col gap-5 md:w-1/3 mb-5"}>
+          <div>
+            <h2 className={"text-lg mb-2 italic font-bold"}>Skill</h2>
+            <ul className={"relative"}>
+              {SKILL.map((skill) => (
+                <li key={skill} className={"flex gap-3"}>
+                  <span>️-</span>
+                  <p>{skill}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </article>
     </section>
