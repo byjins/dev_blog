@@ -3,12 +3,25 @@ import path from "path";
 import matter from "gray-matter";
 import dayjs from "dayjs";
 
+interface FrontMatter {
+  date: string;
+  description: string;
+  slug: string;
+  thumbnail: string;
+  title: string;
+}
+interface Post {
+  category: string;
+  slug: string;
+  frontmatter: FrontMatter;
+}
+
 const postsDirectory = path.join(process.cwd(), "src/content");
 
 // 모든 포스트 목록 불러오기
 export function getAllPosts() {
   const categories = fs.readdirSync(postsDirectory); // 카테고리 폴더 목록 가져오기
-  const allPosts: { category: string; slug: string; frontmatter: any }[] = [];
+  const allPosts: Post[] = [];
 
   categories.forEach((category) => {
     const categoryPath = path.join(postsDirectory, category);
@@ -24,7 +37,10 @@ export function getAllPosts() {
         path.join(categoryPath, file),
         "utf8",
       );
-      const { data } = matter(fileContents);
+      const { data } = matter(fileContents) as unknown as {
+        data: FrontMatter;
+        content: string;
+      };
 
       allPosts.push({ category, slug, frontmatter: data });
     });
