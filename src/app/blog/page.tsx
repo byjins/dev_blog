@@ -1,6 +1,6 @@
 import React from "react";
 import PostCard from "@/components/ui/PostCard";
-import { getAllCategory, getAllPosts } from "@/lib/posts";
+import { getAllPosts } from "@/lib/posts";
 
 // 모든 페이지가 보이는 곳
 const Page = () => {
