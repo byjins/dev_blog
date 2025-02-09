@@ -11,16 +11,18 @@ interface Props {
 
 const PostBody = ({ content }: Props) => {
   return (
-    <MDXRemote
-      source={content}
-      options={{
-        mdxOptions: {
-          remarkPlugins: [remarkGfm, remarkBreaks],
-          rehypePlugins: [rehypePrettyCode, rehypeSlug],
-        },
-      }}
-      components={MdxComponents}
-    />
+    <article className={"prose dark:prose-invert my-10"}>
+      <MDXRemote
+        source={content}
+        options={{
+          mdxOptions: {
+            remarkPlugins: [remarkGfm, remarkBreaks],
+            rehypePlugins: [rehypePrettyCode, rehypeSlug],
+          },
+        }}
+        components={MdxComponents}
+      />
+    </article>
   );
 };
 

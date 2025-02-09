@@ -16,7 +16,7 @@ export default {
             "code::before": { content: '""' }, // 백틱 제거
             "code::after": { content: '""' }, // 백틱 제거
             code: {
-              backgroundColor: "#dedede",
+              backgroundColor: "hsl(var(--muted))",
               fontWeight: "600",
               padding: "2px 4px",
               borderRadius: "4px",

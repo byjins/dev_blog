@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { CalendarIcon } from "@heroicons/react/24/solid";
 
 interface Props {
   post: {
@@ -41,7 +42,7 @@ const PostCard = ({ post }: Props) => {
           </h6>
           <p className={"dark:text-gray-400 mb-2"}>{description}</p>
         </div>
-        <span className={"text-gray-400"}>{date}</span>
+        <span className={"text-xs text-gray-400"}>{date}</span>
       </div>
       <div
         className={

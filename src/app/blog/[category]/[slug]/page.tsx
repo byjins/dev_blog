@@ -1,7 +1,8 @@
 import React from "react";
 import { getPostBySlug } from "@/lib/mdx";
 import PostBody from "@/components/MDX/PostBody";
-import { Metadata } from "next";
+import Giscus from "@/components/ui/Giscus";
+import PostHeader from "@/components/MDX/PostHeader";
 
 interface Props {
   params: Promise<{ category: string; slug: string }>;
@@ -11,15 +12,12 @@ interface Props {
 const DetailPage = async ({ params }: Props) => {
   const { category, slug } = await params;
   const { content, frontmatter } = await getPostBySlug(category, slug);
-  const { title } = frontmatter;
-  console.log(frontmatter);
+  const { title, date } = frontmatter;
   return (
     <div>
-      <h1>{title}</h1>
-      <span>{category}</span>
-      <article className={"prose"}>
-        <PostBody content={content} />
-      </article>
+      <PostHeader category={category} title={title} date={date} />
+      <PostBody content={content} />
+      <Giscus />
     </div>
   );
 };
