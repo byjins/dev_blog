@@ -3,7 +3,6 @@
 import Badge from "@/components/ui/Badge";
 import { useState, MouseEvent, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import path from "path";
 
 interface Props {
   categories: string[];
