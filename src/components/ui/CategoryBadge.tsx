@@ -6,7 +6,7 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
   selected?: boolean;
 }
 
-const Badge = ({ text, selected, ...rest }: Props) => {
+const CategoryBadge = ({ text, selected, ...rest }: Props) => {
   return (
     <div
       className={clsx(
@@ -21,4 +21,4 @@ const Badge = ({ text, selected, ...rest }: Props) => {
   );
 };
 
-export default Badge;
+export default CategoryBadge;

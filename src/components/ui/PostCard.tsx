@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import TagBadge from "@/components/ui/TagBadge";
 
 interface Props {
   post: {
@@ -13,6 +14,7 @@ interface Props {
       thumbnail: string;
       date: string;
       slug: string;
+      tag: string[];
     };
   };
 }
@@ -20,7 +22,7 @@ interface Props {
 const PostCard = ({ post }: Props) => {
   const {
     category,
-    frontmatter: { title, description, thumbnail, date, slug },
+    frontmatter: { title, description, thumbnail, date, slug, tag },
   } = post;
   const router = useRouter();
 
@@ -41,7 +43,12 @@ const PostCard = ({ post }: Props) => {
           </h6>
           <p className={"dark:text-gray-400 mb-2"}>{description}</p>
         </div>
-        <span className={"text-xs text-gray-400"}>{date}</span>
+        <div className={"flex gap-2 items-center"}>
+          <span className={"text-xs text-gray-400"}>{date}</span>
+          {tag.map((tagName, index) => (
+            <TagBadge key={tagName + index} tagName={tagName} />
+          ))}
+        </div>
       </div>
       <div
         className={

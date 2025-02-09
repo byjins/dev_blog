@@ -2,19 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import dayjs from "dayjs";
-
-interface FrontMatter {
-  date: string;
-  description: string;
-  slug: string;
-  thumbnail: string;
-  title: string;
-}
-interface Post {
-  category: string;
-  slug: string;
-  frontmatter: FrontMatter;
-}
+import { FrontMatter, HeadingItem, Post } from "@/model/post";
 
 const postsDirectory = path.join(process.cwd(), "src/content");
 
@@ -68,3 +56,24 @@ export function getAllCategory() {
   // 카테고리 폴더 목록 가져오기
   return fs.readdirSync(postsDirectory);
 }
+
+// 목차 데이터 파싱용
+export const parseToc = (content: string): HeadingItem[] => {
+  const regex = /^(#|##|###) (.*$)/gim;
+  const headingList = content.match(regex);
+  return (
+    headingList?.map((heading: string) => ({
+      text: heading.replace("##", "").replace("#", "").trim(),
+      link:
+        "#" +
+        heading
+          .replace("# ", "")
+          .replace("#", "")
+          .replace(/[\[\]:!@#$/%^&*()+=,.]/g, "")
+          .replace(/ /g, "-")
+          .toLowerCase()
+          .replace("?", ""),
+      indent: (heading.match(/#/g)?.length || 2) - 1,
+    })) || []
+  );
+};
