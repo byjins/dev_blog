@@ -3,6 +3,8 @@ import { getPostBySlug } from "@/lib/mdx";
 import PostBody from "@/components/MDX/PostBody";
 import Giscus from "@/components/ui/Giscus";
 import PostHeader from "@/components/MDX/PostHeader";
+import TableOfContents from "@/components/Layout/TableOfContents";
+import { parseToc } from "@/lib/posts";
 
 interface Props {
   params: Promise<{ category: string; slug: string }>;
@@ -12,10 +14,13 @@ interface Props {
 const DetailPage = async ({ params }: Props) => {
   const { category, slug } = await params;
   const { content, frontmatter } = await getPostBySlug(category, slug);
-  const { title, date } = frontmatter;
+  const { title, date, tag } = frontmatter;
+  const toc = parseToc(content);
+
   return (
     <div>
-      <PostHeader category={category} title={title} date={date} />
+      <TableOfContents toc={toc} />
+      <PostHeader category={category} title={title} date={date} tag={tag} />
       <PostBody content={content} />
       <Giscus />
     </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import Badge from "@/components/ui/Badge";
+import CategoryBadge from "@/components/ui/CategoryBadge";
 import { useState, MouseEvent, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
 
@@ -36,14 +36,14 @@ const CategoryList = ({ categories }: Props) => {
     <>
       {!isDetailPage && (
         <ul className={"flex gap-3 my-5 overflow-y-scroll"}>
-          <Badge
+          <CategoryBadge
             id={"All"}
             text={"All"}
             selected={selected === "All"}
             onClick={handleAllCategoryClick}
           />
           {categories.map((category) => (
-            <Badge
+            <CategoryBadge
               id={category}
               key={category}
               text={category}

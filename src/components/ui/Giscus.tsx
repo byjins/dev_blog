@@ -44,5 +44,5 @@ export default function Giscus() {
     );
   }, [theme]);
 
-  return <section ref={ref} />;
+  return <article ref={ref} />;
 }

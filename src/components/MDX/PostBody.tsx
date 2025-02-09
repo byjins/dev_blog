@@ -11,7 +11,9 @@ interface Props {
 
 const PostBody = ({ content }: Props) => {
   return (
-    <article className={"prose dark:prose-invert my-10"}>
+    <article
+      className={"prose dark:prose-invert my-10 mx-auto w-full max-w-[768px]"}
+    >
       <MDXRemote
         source={content}
         options={{
