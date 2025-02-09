@@ -8,22 +8,39 @@
   src: url("/public/fonts/SCDream4.otf") format("truetype");
 }
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  color: var(--foreground);
-  background: var(--background);
   font-family: SCDream, sans-serif;
   overflow-x: hidden;
   overflow-y: scroll;
+}
+
+@layer base {
+  :root {
+    --background: #ffffff;
+    --foreground: #171717;
+    --muted: 210 40% 96%;
+  }
+  .dark {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --muted: 210 20% 20%;
+  }
+}
+
+
+.prose pre > code {
+  display: grid;
+}
+
+.prose pre::-webkit-scrollbar {
+  display: none;
+}
+/* Fenced Code block - hide horizontal scrollbar: mozila */
+.prose pre {
+  scrollbar-width: none;
+}
+
+/* Fenced Code block - line style */
+.prose pre span[data-line] {
+  @apply inline-block px-4 py-0.5 leading-snug;
 }

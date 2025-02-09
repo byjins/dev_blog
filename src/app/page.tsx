@@ -79,20 +79,6 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div>
-            <h2 className={"text-lg mb-2 italic font-bold"}>Education</h2>
-            <div className={"flex flex-col gap-6"}>
-              <div className={"flex gap-5 items-center justify-between"}>
-                <div className={"flex flex-col"}>
-                  <span>경민대학교</span>
-                  <span className={"text-gray-500"}>
-                    컴퓨터소프트웨어학과(전공심화)(학사)
-                  </span>
-                </div>
-                <p>4.26 / 4.5</p>
-              </div>
-            </div>
-          </div>
         </div>
         <div className={"flex flex-col gap-5 md:w-1/3 mb-5"}>
           <div>

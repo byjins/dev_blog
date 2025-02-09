@@ -15,9 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`antialiased min-h-dvh dark:bg-foreground dark:text-white mb-10`}
-      >
+      <body className={`antialiased min-h-dvh mb-10`}>
         <ThemeProvider>
           <Header />
           <main className={"max-w-[768px] mx-auto p-4"}>{children}</main>
