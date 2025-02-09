@@ -1,6 +1,5 @@
 import Link from "next/link";
 import React from "react";
-import { CalendarIcon } from "@heroicons/react/20/solid";
 import TagBadge from "@/components/ui/TagBadge";
 
 interface Props {
