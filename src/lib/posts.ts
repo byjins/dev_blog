@@ -69,10 +69,9 @@ export const parseToc = (content: string): HeadingItem[] => {
         heading
           .replace("# ", "")
           .replace("#", "")
-          .replace(/[\[\]:!@#$/%^&*()+=,.]/g, "")
+          .replace(/[\[\]:!@#$/%^&*()+=,.?]/g, "")
           .replace(/ /g, "-")
-          .toLowerCase()
-          .replace("?", ""),
+          .toLowerCase(),
       indent: (heading.match(/#/g)?.length || 2) - 1,
     })) || []
   );

@@ -59,7 +59,9 @@ const PostCard = ({ post }: Props) => {
           src={thumbnail}
           alt={"이미지"}
           fill
-          className={"object-cover group-hover:scale-105 transition-transform"}
+          className={
+            "object-cover group-hover:scale-105 transition-transform bg-white"
+          }
         />
       </div>
     </div>
