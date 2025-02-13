@@ -40,7 +40,7 @@ const TableOfContents = ({ toc }: Props) => {
     };
 
   return (
-    <nav className={"hidden lg:fixed lg:block w-[220px] right-0 my-8 mx-2"}>
+    <nav className={"hidden xl:fixed xl:block w-[220px] right-0 my-8 ml-2 mr-5"}>
       <div className={"font-bold "}>On this Page</div>
       <ul>
         {toc.map((item, index) => {
@@ -48,7 +48,7 @@ const TableOfContents = ({ toc }: Props) => {
             <li
               key={item.link + index}
               className={clsx(
-                activeHierarchy[0] === item.link.slice(1) && "text-blue-400",
+                activeHierarchy[0] === item.link.slice(1) && "text-blue-400 font-bold",
                 headingType(item.indent),
                 "text-sm py-1 transition hover:text-blue-400",
               )}
