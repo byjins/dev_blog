@@ -1,0 +1,219 @@
+---
+title: "검색엔진 최적화? 그게뭐야"
+slug: "seo"
+date: "2025-02-16"
+description: "웹페이지 개발 시 중요한 SEO에 대해 알아보자!"
+thumbnail: /images/posts/Next/seo.webp
+tag: ['SEO']
+---
+
+# 들어가며
+우리는 멋진 웹페이지를 개발했습니다! 클라우드에 배포하고 도메인까지 연결을 시켰습니다. 그럼 이제 많은 사용자들이 우리의 웹페이지를 사용하고 소문날 일만 남았죠!
+
+> 며칠의 시간이 지났는데도 사용자는 없습니다.. 검색을 해도 해도 페이지가 나오지 않습니다. 이게 어떻게 된 것일까요?
+
+제 블로그도 마찬가지입니다. 개발을 하고 배포를 했는데 구글에 검색을 해도 나오질 않아요! `멋진 도메인까지 연결했는데 말이죠..`
+
+정말 오랜시간이 지난다면 검색될 수도 있지만 더 빠른 시간안에 나의 멋진 사이트가 검색될 수 있도록 해야겠죠?
+
+`지금부터 검색이 되지 않았던 이유와 SEO를 적용하여 웹페이지를 노출하는 방법에 대해 알아보겠습니다.`
+
+
+# SEO란 ?
+SEO는 검색 엔진 최적화(`Search Engine Optimization`)의 약자입니다. 즉, 검색 엔진에서 특정 키워드를 검색했을 때 웹사이트가 노출되도록 `콘텐츠`, `링크`, `기술적 요소` 등을 `최적화하는 과정`을 말합니다.
+이를 통해 더 많은 트래픽을 유도하고, 사용자에게 유용한 정보를 제공해주죠!
+
+> 최적화를 잘 할 수록 검색엔진은 웹페이지에게 높은 순위를 부여하며, 순위가 높을 수록 검색 결과 상단에 위치하게 됩니다.
+
+> [검색 Essentials](https://developers.google.com/search/docs/essentials?hl=ko)에는 웹사이트를 Google 검색에 표시하는 데 필요한 가장 중요한 요소가 간략하게 설명되어 있습니다. 특정 사이트가 Google 색인에 추가된다는 보장은 없지만 [검색 Essentials](https://developers.google.com/search/docs/essentials?hl=ko)를 준수하는 사이트는 Google 검색결과에 표시될 가능성이 높습니다.
+
+## Google 검색의 3단계
+> 구글의 검색은 세 단계로 작동하며, 각 단계가 모든 페이지에 적용되진 않습니다!
+
+### 크롤링
+웹에 어떤 페이지가 존재하는지 파악합니다. 모든 웹페이지가 등록되는 중앙 레지스트리가 있는것은 아니므로 Google은 계속해서 새 페이지와 업데이트된 페이지를 검색하여 파악된 페이지 목록에 추가합니다! 이것을 `URL 검색`이라고 합니다.
+Google에선 페이지의 URL을 발견하면 페이지를 방문(크롤링)할 수 있습니다. Google은 막대한 수의 컴퓨터를 사용하여 웹에 있는 페이지 수십억 개를 크롤링합니다.
+이때 웹페이지를 가져오는 프로그램을 [Googlebot](https://developers.google.com/search/docs/crawling-indexing/googlebot?hl=ko)(또는 크롤러, 로봇, 봇, 스파이더)이라고 합니다. `Googlebot`은 알고리즘 프로세스를 사용하여 크롤링할 사이트와 크롤링 빈도, 각 사이트에서 가져올 페이지 수를 결정합니다
+
+> Googlebot이 발견한 페이지를 모두 크롤링하는 것은 아니라고 합니다. 크롤링을 허용하지 않거나.. 엑세스가 없는 페이지일 수도 있기 때문이죠.
+
+### 색인생성
+페이지가 크롤링되면 Google은 페이지의 내용을 파악합니다. 이 단계를 `색인생성`이라고 하며 `<title>` 요소 및 `Alt 속성`, `이미지`, `동영상` 등 `텍스트 콘텐츠` 및 `핵심 콘텐츠 태그`와 `속성`을 처리하고 분석하는 작업이 포함됩니다.
+이 때 인터넷에 있는 다른 페이지와 중복되는 아니면 `표준 페이지`인지 판단합니다. `표준 페이지`는 검색결과에 표시될 수 있는 페이지입니다. `표준 페이지`를 정하는 방법은 비슷한 콘텐츠의 페이지를 그룹으로 묶은 다음(클러스터링이라고도 함), 이 그룹을 가장 잘 대표하는 페이지를 선택합니다.
+
+표준 페이지와 해당 클러스터에 관해 수집한 정보는 수천 대의 컴퓨터에서 호스팅되는 대규모 데이터베이스에 저장될 수 있는데, 이를 Google 색인이라고 합니다. `색인 생성은 보장되지 않으며 Google에서 처리하는 모든 페이지의 색인이 생성되는 것은 아닙니다.`
+
+
+### 검색결과 게재
+사용자가 검색어를 입력하면 Google 컴퓨터는 색인에서 일치하는 페이지를 검색한 다음 품질이 가장 높고 사용자의 검색어와 가장 관련성이 크다고 판단되는 결과를 반환합니다.
+
+
+> 구글 검색팀의 엔지니어인 Gary Illyes가 설명하는 영상입니다. 재생목록을 봐보세요! [검색의 3단계(Google)](https://www.youtube.com/watch?v=5MIAugQ17ks&list=PLKoqnv2vTMUN83JWBNM6MoBuBcyqhFNY3&index=1)
+
+## 검색 엔진 최적화 방법
+자! SEO가 필요한 이유를 알았고 구글의 검색 3단계까지 알아보았습니다. 그렇다면 이제 `검색 엔진 최적화` 방법들을 알아보고 적용해봐야겠습니다!
+
+### 중복 콘텐츠
+[표준 페이지의 정의](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls?hl=ko#definition) 및 이러한 페이지가 사이트의 크롤링 및 색인 생성에 미치는 영향을 파악해야 합니다.
+
+### 리소스
+크롤링해야 하는 모든 리소스(이미지, CSS 파일 등) 또는 페이지에 Google이 액세스할 수 있는지 확인합니다. 즉, 리소스가 robots.txt 규칙으로 차단되지 않았으며 익명의 사용자가 액세스할 수 있어야 합니다.
+
+### Robots.txt
+robots.txt 규칙을 사용하여 크롤링을 방지하고 사이트맵을 사용하여 크롤링을 유도합니다. 또한 사이트에서 요청으로 서버에 과부하를 줄 수 있는 중복 콘텐츠나 중요하지 않은 리소스(예: 아이콘이나 로고와 같이 자주 사용되는 작은 그래픽)의 크롤링을 차단합니다.
+
+> 과부하가 일어날 경우 크롤링이 안되기 때문에 너무 큰 리소스는 크롤링을 차단하는 것이 좋습니다!
+
+### 사이트맵
+사이트에 있는 `페이지`, `동영상` 및 `기타 파일`과 그 관계에 대한 정보를 제공하는 파일입니다. 페이지를 Google에 알려 주는 매우 중요한 방법입니다.
+또한 업데이트 빈도 등의 추가 정보도 제공하며 `이미지`나 `동영상`과 같이 텍스트가 아닌 콘텐츠를 크롤링하는 데 매우 중요합니다.
+
+
+## SEO 적용해보기
+
+### 메타태그
+여러페이지에서 자주 사용되는 하나의 config로 분리하였다.
+아직 나만의 이미지는 없어 Og(Open Graph)는 설정하지 않았다.
+
+```javascript
+// src/config/site.ts
+
+export const siteConfig = {
+    name: '유병진 | Jin',
+    url: 'https://byjins.dev',
+    ogImage: '',
+    description: '우당탕탕 Jin 개발일기',
+    links: {
+        github: 'https://github.com/byjins',
+    },
+}
+```
+> 구글은 공식적으로 meta keywords 태그를 웹 검색 랭킹에 사용하지 않는다고 발표했어요.
+
+그러니 keywords에 많은 시간을 들이지 않는 것이 좋다고합니다! 저는 그냥 프론트엔드와 관련된 키워드만 쏙 넣어놨답니다!
+
+`2017년, 구글 검색팀 엔지니어 Gary Illyes의 트위터 발언`
+> "If you’re using the keywords meta tag, stop wasting your time."
+(만약 meta keywords 태그를 사용하고 있다면, 시간 낭비하지 마세요.)
+
+``` javascript
+// src/app/layout.tsx
+export const metadata: Metadata = {
+  title: {
+    default: siteConfig.name,
+    template: `%s`,
+  },
+  metadataBase: new URL(siteConfig.url),
+  description: siteConfig.description,
+  keywords: [
+    '프론트엔드',
+    '자바스크립트',
+    '타입스크립트',
+    '리액트',
+    '넥스트',
+    'frontend',
+    'js',
+    'javascript',
+    'ts',
+    'typescript',
+    'react',
+    'nextjs',
+  ],
+  authors: [
+    {
+      name: 'Jin',
+      url: siteConfig.url,
+    },
+  ],
+  creator: 'Jin',
+};
+
+```
+
+### sitemap
+동적으로 생성되는 주소가 있기에 사이트맵 또한 동적으로 생성되게 하였습니다.
+```javascript
+import type { MetadataRoute } from 'next';
+
+import { siteConfig } from '@/config/site';
+import { getAllCategory, getAllPosts } from '@/lib/posts';
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+    const categoryList = getAllCategory();
+    const postList = getAllPosts();
+
+    // 각 카테고리 URL에 대한 Sitemap 항목 생성
+    const generatedCategorySitemap = categoryList.map(category => ({
+        url: `${siteConfig.url}/blog/${category}`,
+        lastModified: new Date(),
+    }));
+
+    // 각 포스트 URL에 대한 Sitemap 항목 생성
+    const generatedPostSitemap = postList.map(post => ({
+        url: `${siteConfig.url}/blog/${post.category}/${post.frontmatter.slug}`,
+        lastModified: post.frontmatter.date,
+    }));
+
+    // 카테고리와 포스트의 Sitemap 항목을 합쳐서 반환
+    return [...generatedCategorySitemap, ...generatedPostSitemap];
+}
+
+```
+> [Nextjs sitemap](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap)
+
+생성결과
+```xml
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- 카테고리 Sitemap 항목 -->
+    <url>
+        <loc>https://byjins.dev/blog/Next</loc>
+        <lastmod>2025-02-16T08:23:00.592Z</lastmod>
+    </url>
+
+    <!-- 포스트 Sitemap 항목 -->
+    <url>
+        <loc>https://byjins.dev/blog/Next/seo</loc>
+        <lastmod>2025-02-16</lastmod>
+    </url>
+    <url>
+        <loc>https://byjins.dev/blog/Next/next-basic</loc>
+        <lastmod>2025-02-11</lastmod>
+    </url>
+    <url>
+        <loc>https://byjins.dev/blog/Next/blog-dev</loc>
+        <lastmod>2025-02-09</lastmod>
+    </url>
+</urlset>
+```
+
+### robots.txt 파일
+크롤러에게 특정 페이지에 대해 크롤링 허용/제한을 하는 파일입니다.
+```javascript
+import type { MetadataRoute } from 'next';
+
+import { siteConfig } from '@/config/site';
+
+export default function robots(): MetadataRoute.Robots {
+    return {
+        rules: {
+            // 크롤러 지정
+            userAgent: '*',
+            // 크롤링을 허용할 경로
+            allow: '/',
+        },
+        sitemap: `${siteConfig.url}/sitemap.xml`,
+    };
+}
+
+```
+
+## 마무리
+제가 오늘 공부하고 적은 내용은 SEO에 극히 일부라고 생각합니다. 모든 내용을 담을 순 없어 정말 간단하고 확실하게 알 수 있는 부분에 대해서 정리해보았습니다.
+
+배운 내용을 토대로 구글 검색 내용과 공식문서를 기반으로 제 블로그에 SEO 기본을 적용해보았는데 효과가 생길지 궁금하네요!
+
+> 다음 포스트는 제 블로그 글마다 SEO가 잘 적용될 수 있도록 메타데이터를 추가해보려고 합니다. 추가적으로 SEO를 설정하며 제가 사용한 cloudflare의 도메인과 연결하는 방법도 알아보겠습니다!
+
+참고
+- [Google 검색센터](https://developers.google.com/search/docs?hl=ko)
+- [SEO는 마케팅이다.](https://www.napol.dev/blog/deep_dive/seo)
