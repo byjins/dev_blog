@@ -12,6 +12,7 @@ export async function getPostBySlug(category: string, slug: string) {
 
   return {
     content,
+    url: `/blog/${category}/${slug}`,
     frontmatter: data,
   };
 }

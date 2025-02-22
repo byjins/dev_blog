@@ -4,7 +4,8 @@ import matter from "gray-matter";
 import dayjs from "dayjs";
 import { FrontMatter, HeadingItem, Post } from "@/model/post";
 
-const postsDirectory = path.join(process.cwd(), "src/content");
+const BASE_PATH = 'src/content';
+const postsDirectory = path.join(process.cwd(), BASE_PATH);
 
 // 모든 포스트 목록 불러오기
 export function getAllPosts() {
@@ -76,3 +77,52 @@ export const parseToc = (content: string): HeadingItem[] => {
     })) || []
   );
 };
+
+
+// 특정 카테고리 또는 전체 디렉토리에서 모든 MDX 파일의 경로를 가져옵니다.
+export const getPostPaths = (category?: string): string[] => {
+  const targetPath = category ? path.join(BASE_PATH, category) : BASE_PATH;
+
+  if (!fs.existsSync(targetPath)) {
+    throw new Error(`경로를 찾을 수 없습니다: ${targetPath}`);
+  }
+
+  const mdxPaths: string[] = [];
+
+  const traverseDirectory = (dir: string) => {
+    const entries = fs.readdirSync(dir, { withFileTypes: true });
+
+    for (const entry of entries) {
+      const fullPath = path.join(dir, entry.name);
+
+      if (entry.isDirectory()) {
+        // 디렉토리인 경우 재귀적으로 탐색
+        traverseDirectory(fullPath);
+      } else if (entry.isFile() && fullPath.endsWith('.mdx')) {
+        // MDX 파일인 경우 경로 저장
+        mdxPaths.push(fullPath);
+      }
+    }
+  };
+
+  traverseDirectory(targetPath);
+
+  return mdxPaths;
+};
+
+
+// 포스트의 추가 정보를 파싱
+export const parsePostInfo = (postPath: string) => {
+  const normalizedPath = postPath.split(path.sep).join('/');
+  const filePath = normalizedPath
+      .slice(normalizedPath.indexOf(BASE_PATH))
+      .replace(`${BASE_PATH}/`, '')
+      .replace('.mdx', '');
+
+  const [category, slug] = filePath.split('/');
+
+  const url = `/blog/${category}/${slug}`;
+
+  return { url, category, slug };
+};
+
