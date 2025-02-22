@@ -1,0 +1,99 @@
+---
+title: "블로그 상세페이지 개선"
+slug: "seo-ssg"
+date: "2025-02-22"
+description: "블로그 상세페이지에 SEO 및 SSG를 적용해서 개선해보자!"
+thumbnail: /images/posts/Next/ssg.webp
+tag: ['Next', 'SEO', 'SSG']
+---
+
+# 들어가며
+블로그 배포를 마치고 도메인까지 연결했다. 그런데 이게 무슨일? 로컬에서는 바로 접속되던 블로그 상세 페이지가 배포된 환경에선 2초 가량의 접속시간이 소요되었다!!
+
+이런 일이 왜일어나고 어떻게 수정할 수 있을지 알아보고 각 블로그 상세 페이지에 SEO가 적용될 수 있도록 해보겠다!
+
+## 페이지 접속이 느린 이유!
+기존에 개발되었던 페이지의 경우는 단순 SSR 이었다. 그렇기에 초기 접속 시에 블로그 글을 클릭하게 되면 서버에서 페이지를 만들어 보내주느라 오래걸렸다.
+> 나는 SSR이 필요가 없는 페이지인데, 왜 이렇게 했을까? 아마 처음 쓰는 Next인 것도 그렇고, 구글 검색해서 막 가져다쓰고 하다보니.. 놓친 것 같다.
+
+### SSG(Static Site Generation) 적용하기
+SSG를 적용하기 위해선 generateStaticParams를 사용해야 한다. generateStaticParams는 Next에서 정적페이지를 미리 생성하기 위한 함수이다.
+> generateStaticParams 함수를 사용하여 빌드 시점에 HTML을 만들어 놓도록 하는 것이다.
+
+```javascript
+// [slug]/page.tsx
+// 해당 페이지가 generateStaticParams() 를 사용함으로서 SSG로 적용되어짐
+// 모든 포스트의 경로를 미리 정의하고 [slug]페이지에서 사용하는 param의 값을 return 해줌
+
+export function generateStaticParams() {
+    const postPaths: string[] = getPostPaths();
+
+    return postPaths
+        .map(path => parsePostInfo(path))
+        .map(item => ({
+            category: item.category,
+            slug: item.slug,
+        }));
+}
+
+const DetailPage = async ({ params }: Props) => {
+  const { category, slug } = await params;
+  return <div>...</div>
+}
+
+```
+
+
+## 동적 SEO 하는 이유
+단순 정적 SEO를 설정할 경우 Next.js는 서버에서 미리 HTML을 생성할 수 있기 때문에 검색 엔진 크롤러가 더 쉽게 콘텐츠를 수집할 수 있다.
+하지만 모든 페이지의 메타데이터(title, description, og:image 등)가 동일하면 SEO 효과가 떨어진다.
+> 각 페이지의 콘텐츠에 맞는 메타데이터를 동적으로 설정해야 검색 엔진에서 더 잘 인식된다!
+
+### 동적 SEO 적용하기
+동적 SEO를 적용하기 위해 generateMetadata()를 사용
+
+```javascript
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    const { slug, category } = await params;
+    const post = await getPostBySlug(category, slug);
+    const { title: postTitle, thumbnail, description, date } = post.frontmatter;
+    const imageUrl = `${siteConfig.url}${thumbnail}`;
+
+    return {
+        title: postTitle,  // 페이지의 제목 (SEO에서 중요한 요소, 브라우저 탭에 표시됨)
+        description: description,  // 페이지의 설명 (검색 엔진 결과에서 미리보기 텍스트로 사용됨)
+
+        openGraph: {
+            title: postTitle,  // Open Graph 제목 (소셜 미디어에서 공유될 때 사용됨)
+            description: description,  // Open Graph 설명 (소셜 미디어에서 공유될 때 표시되는 설명)
+            type: 'article',  // Open Graph 타입 (여기서는 'article'로 설정, 'website' 같은 다른 타입도 사용 가능)
+            publishedTime: date,  // 게시 날짜 (OG 메타데이터의 게시 시간, 소셜 미디어에서 표시될 수 있음)
+            url: `${siteConfig.url}${post.url}`,  // 페이지 URL (이 페이지의 주소, Open Graph와 SEO에서 사용)
+            images: imageUrl,  // 페이지 미리보기 이미지 (소셜 미디어에서 공유 시 표시될 이미지 URL)
+        },
+    };
+}
+```
+
+## Domain 적용해보기
+지금 사용하는 도메인의 경우 dev-blog-vert.vercel.app 이런식으로 되어있어 사실 멋이 안난다!
+내가 개발한 블로그인데 나만의 도메인을 가지고 있으면 얼마나 좋은가!!
+
+> cloudflare에서 도메인을 구매했다! 타 사이트보다 저렴해서..도 있고 추천받았다!
+
+### 도메인 구매 후 설정하기
+1. vercel에 접속해서 본인의 프로젝트에 들어간 후 Domains 클릭 후 -> add 하기!
+2. add 누른 후 나온 창에 본인의 구매한 도메인 넣고 추가!
+3. 화면에 나온 Record 정보가 나왔다면 70% 성공!
+4. cloudflare 접속해서 본인 도메인 대시보드에 접근 후 DNS 레코드 메뉴 들어가기!
+5. 추가 후 vercel에서 도메인 추가 후 나온 Record 정보 넣기!
+6. 저장하면 완료!
+
+
+
+
+### 마무리
+간단한 상세페이지 개선 글을 작성하면서 generateStaticParams, generateMetadata가 어떤 기능을 하는지 알아보았다.
+
+해당 글을 작성하고 개선하면서 새롭게 알게된것도 있고 재미있었다!!
+
