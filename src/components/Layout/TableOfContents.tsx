@@ -1,3 +1,5 @@
+'use client';
+
 import { HeadingItem } from '@/model/post';
 import { MouseEvent } from 'react';
 import clsx from 'clsx';
