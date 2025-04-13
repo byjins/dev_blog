@@ -58,6 +58,7 @@ export function getAllCategory() {
   return fs.readdirSync(postsDirectory);
 }
 
+
 // 목차 데이터 파싱용
 export const parseToc = (content: string): HeadingItem[] => {
   const regex = /^(#|##|###) (.*$)/gim;
@@ -70,7 +71,7 @@ export const parseToc = (content: string): HeadingItem[] => {
         heading
           .replace("# ", "")
           .replace("#", "")
-          .replace(/[\[\]:!@#$/%^&*()+=,.?]/g, "")
+          .replace(/[\[\]:!@#$/%^&*()+=,.?~]/g, "")
           .replace(/ /g, "-")
           .toLowerCase(),
       indent: (heading.match(/#/g)?.length || 2) - 1,
