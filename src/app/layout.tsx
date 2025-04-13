@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
-import "./globals.css";
-import Header from "@/components/Layout/Header";
-import ThemeProvider from "@/components/ui/Theme/ThemeProvider";
-import {siteConfig} from "@/config/site";
+import type { Metadata } from 'next';
+import './globals.css';
+import Header from '@/components/Layout/Header';
+import ThemeProvider from '@/components/ui/Theme/ThemeProvider';
+import { siteConfig } from '@/config/site';
 
 export const metadata: Metadata = {
   title: {
@@ -35,18 +35,18 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  children,
-}: Readonly<{
+                                     children,
+                                   }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`antialiased min-h-dvh mb-10`}>
-        <ThemeProvider>
-          <Header />
-          <main className={"max-w-[768px] mx-auto p-4"}>{children}</main>
-        </ThemeProvider>
-      </body>
+    <body className={`antialiased min-h-dvh mb-10`}>
+    <ThemeProvider>
+      <Header />
+      <main className={'max-w-[768px] mx-auto p-4'}>{children}</main>
+    </ThemeProvider>
+    </body>
     </html>
   );
 }

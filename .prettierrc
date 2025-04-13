@@ -1,0 +1,7 @@
+{
+  "singleQuote": true,       // 문자열을 ' '로
+  "semi": true,              // 문장 끝 세미콜론 붙임
+  "tabWidth": 2,             // 들여쓰기 간격 (보통 2칸)
+  "trailingComma": "es5",    // 마지막 쉼표: 객체, 배열 등 ES5 기준
+  "arrowParens": "always"    // 화살표 함수 괄호 항상 사용 (가독성 ↑)
+}

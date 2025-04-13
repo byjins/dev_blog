@@ -22,9 +22,6 @@ const SKILL = [
   "JavaScript",
   "TypeScript",
   "React",
-  "Nextjs",
-  "tailwindcss",
-  "styled-components",
 ];
 
 const Home = () => {

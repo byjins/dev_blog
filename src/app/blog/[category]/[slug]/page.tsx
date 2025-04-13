@@ -54,7 +54,7 @@ const DetailPage = async ({ params }: Props) => {
 
   return (
     <div>
-      <TableOfContents toc={toc} />
+      <TableOfContents toc={toc}/>
       <PostHeader category={category} title={title} date={date} tag={tag} />
       <PostBody content={content} />
       <Giscus />
