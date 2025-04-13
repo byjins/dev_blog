@@ -1,4 +1,6 @@
-import { useEffect, useState, useMemo } from "react";
+'use client';
+
+import { useEffect, useMemo, useState } from 'react';
 
 /**
  * 헤더의 활성 상태와 계층 구조를 추적하는 커스텀 훅
@@ -17,7 +19,7 @@ export function useHeaderObserver(
   const observerOptions = useMemo(
     () => ({
       root: options?.root || null,
-      rootMargin: options?.rootMargin || "0px 0px -80% 0px",
+      rootMargin: options?.rootMargin || '0px 0px -80% 0px',
       threshold: options?.threshold || 0,
     }),
     [options?.root, options?.rootMargin, options?.threshold],
