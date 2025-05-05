@@ -21,7 +21,6 @@ const headingType = (indent: number) => {
 };
 
 const TableOfContents = ({ toc }: Props) => {
-
   const { activeHierarchy } = useHeaderObserver('h1, h2, h3', {
     root: null,
     rootMargin: '0px 0px -80% 0px',
